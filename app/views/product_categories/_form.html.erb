@@ -1,0 +1,30 @@
+<%= form_with(model: product_category) do |form| %>
+<% if product_category.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(product_category.errors.count, "error") %> prohibited this product_category from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% product_category.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="mb-6">
+        <%= form.label :name, class: label_class %>
+          <%= form.text_field :name, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :description, class: label_class %>
+          <%= form.text_area :description, class: input_class %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if product_category.persisted? %>
+<%= link_to "Cancel", product_category, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", product_categories_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>

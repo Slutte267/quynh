@@ -1,0 +1,50 @@
+<%= form_with(model: product) do |form| %>
+<% if product.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="mb-6">
+        <%= form.label :name, class: label_class %>
+          <%= form.text_field :name, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :description, class: label_class %>
+          <%= form.text_area :description, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :price, class: label_class %>
+          <%= form.text_field :price, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :ingredients, class: label_class %>
+          <%= form.text_area :ingredients, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :benefits, class: label_class %>
+          <%= form.text_area :benefits, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :supplier_id, class: label_class %>
+          <%= form.collection_select :supplier_id, Supplier.all, :id, :name, {prompt: true} %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :product_category_id, class: label_class %>
+          <%= form.collection_select :product_category_id,ProductCategory.all, :id, :name, {prompt: true}  %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if product.persisted? %>
+<%= link_to "Cancel", product, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", products_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>
