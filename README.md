@@ -22,7 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# Quynh-anh-thanh-BloomBeauty-Cosmetic-store-management
 # quynh
 # quynh
 # quynh
